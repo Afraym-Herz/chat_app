@@ -67,7 +67,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 onChanged: (data) { password=data; }  ,
                 ),
                 CustomButton(
-                  name: "Register",
+                  name : "Register",
                    onTap: () async { 
                    if (globalKey.currentState!.validate() ){
                     isLoading = true;
