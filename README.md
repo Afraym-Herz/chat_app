@@ -69,3 +69,66 @@ the login page contain SignIn method from FirebaseAuth instance
 when the register page contain create user method from Firebase instance
 
 
+
+
+-----------------------------
+
+
+
+
+
+# Chat page (importance part)
+
+
+## Variables
+
+### messages (CollectionReference)
+
+- it is a reference for FirebaseFirestore.instance.collection(kMessageReference) , it is use to refernece the collection which contain the messages for current chat (documents)
+
+
+### ScrollController (_controller)
+
+- it is used to control the scroll of listView.builder in our case using to scroll to bottom of the chat when send a new message or the friend sent a message 
+
+### TextEditingController (controler)
+
+- it is used to control the TextEditor in our case , we use it to clear the TextEditor when send a message
+
+### Arguments (email) 
+
+- it is contain the user's email we get by ModalRoute.of(context)!.settings.arguments , we use it to specified this message if the user sent it or the friend
+
+
+
+
+## Stream Builder
+
+
+### QuerySnapshot
+
+
+### stream 
+
+- it is attribute in StreamBuilder using to contain the data which will get by queries
+- we use it by additional features to ordered the messages by the time of sent by descending 
+and it is the line of code messages.orderBy(kCreatedAt, descending: true).snapshots()
+
+
+### builder
+
+- we check if snapshot contain data , create empty messagesList and we add the messages to this list by forLoop will play until all messages was added 
+- we sent all messages (docs) to Message model from json to handle all messages to be Message model and add it to messageList 
+
+
+### ListView.builder (in \builder) 
+
+- we put ListView.builder in Expanded widget to determine the size of list view and scroll the list in this size
+- we put the _controller in attribute controller 
+- we check in itmeBuilder if the email in current message is for user or another so we put the message's content in the correct bubble chat (if he is user in the left  if friend in the right)
+
+
+### TextField
+
+- by onSubmitted attribute in TextField we accept data from user and use method add from messages (CollectionReference) and we send with message content the date (to order) and email (to determine who is send)
+- we use controller (TextEditing) to clear TextField after send the message and use _controller to scroll after send a message
