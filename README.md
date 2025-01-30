@@ -49,7 +49,7 @@ it is create to know the state of the form , if its state validate , failed or s
 
 ## the action when click on Log in
 1 - bool loading convert to true and setState function will rebuild the screen to show the loading prograss circular
-2 -
+
 ### Sign in method 
 - using object from UserCredentail (user) to storage the response which is coming from Firebase 
 - we create instance from FirebaseAuth and use method SignInWithEmailAndPassword and we put email and password which we get them from Forms 
